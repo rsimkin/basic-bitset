@@ -1,4 +1,4 @@
-package main
+package basic_bitset
 
 type BasicBitset struct {
     data map[uint8]uint64
