@@ -5,20 +5,20 @@ import (
 )
 
 type BasicBitset struct {
-    data map[uint8]uint64
+    data map[uint16]uint64
 }
 
 func (b *BasicBitset) Add(value int) {
-	var base uint8 = uint8(value / 64)
-	var rest uint8 = uint8(value % 64)
+	var base uint16 = uint16(value / 64)
+	var rest uint16 = uint16(value % 64)
 	var bitValue uint64 = 1 << rest
 
 	b.data[base] |= bitValue
 }
 
 func (b *BasicBitset) Has(value int) bool {
-	var base uint8 = uint8(value / 64)
-	var rest uint8 = uint8(value % 64)
+	var base uint16 = uint16(value / 64)
+	var rest uint16 = uint16(value % 64)
 	var bitValue uint64 = 1 << rest
 
 	storage, exists := b.data[base]
@@ -42,7 +42,7 @@ func (b *BasicBitset) Iterate(f func(element int)) {
 	for index, key := range keys {
 		bitIndex := 0
 
-		for storage := b.data[uint8(key)]; storage > 0; storage /= 2 {
+		for storage := b.data[uint16(key)]; storage > 0; storage /= 2 {
 			if storage % 2 > 0 {
 				f(index * 64 + bitIndex)
 			}
@@ -53,6 +53,6 @@ func (b *BasicBitset) Iterate(f func(element int)) {
 
 func NewBasicBitset() *BasicBitset {
 	var b BasicBitset
-	b.data = make(map[uint8]uint64)
+	b.data = make(map[uint16]uint64)
 	return &b
 }
