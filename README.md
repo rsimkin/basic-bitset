@@ -4,6 +4,6 @@
 
 | Способ хранения | Использование памяти |
 |-----------------|----------------------|
-| Basic Bitset    | 66M                  |
+| Basic Bitset    | 68M                  |
 | map[uint32]bool | 128M                 |
 |[Roaring bitmap](https://roaringbitmap.org/)| 66M|
