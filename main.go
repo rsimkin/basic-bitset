@@ -1,12 +1,12 @@
 package main
 
 import (
-	"basic_bitset"
+	"github.com/rsimkin/basic-bitset/bitset"
 	"fmt"
 )
 
 func main() {
-	set := basic_bitset.NewBasicBitset()
+	set := bitset.NewBasicBitset()
 
 	for i := 0; i < 13000000; i += 2 {
 		set.Add(i)
